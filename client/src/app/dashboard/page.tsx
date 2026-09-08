@@ -23,6 +23,7 @@ import {
   Loader2,
   AlertCircle,
   Eye,
+  ChevronRight,
 } from 'lucide-react';
 import api from '../../lib/api';
 import { DashboardStats, Post, Location } from '../../types';
