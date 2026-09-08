@@ -34,7 +34,7 @@ app.use(
     origin: (origin, callback) => {
       // allow requests with no origin (like mobile apps, curl, or server-to-server)
       if (!origin) return callback(null, true);
-      if (allowedOrigins.indexOf(origin) !== -1 || origin.endsWith('.vercel.app')) {
+      if (allowedOrigins.indexOf(origin) !== -1 || origin.endsWith('.vercel.app') || origin.endsWith('.onrender.com')) {
         return callback(null, true);
       }
       return callback(null, true); // Permissive for easy evaluation/testing
