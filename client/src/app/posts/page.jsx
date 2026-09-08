@@ -6,37 +6,28 @@ import { ProtectedRoute } from '../../components/auth/ProtectedRoute';
 import {
   FileText,
   Search,
-  Filter,
-  PlusCircle,
   Sparkles,
-  MapPin,
-  Calendar,
   Send,
-  Edit3,
   Trash2,
   Eye,
   Loader2,
-  Building2,
-  CheckCircle2,
-  Clock,
 } from 'lucide-react';
 import api from '../../lib/api';
-import { Post, Location, PostStatus } from '../../types';
 import { QuickViewPostModal } from '../../components/posts/QuickViewPostModal';
 
 export default function PostsManagementPage() {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [locations, setLocations] = useState<Location[]>([]);
+  const [posts, setPosts] = useState([]);
+  const [locations, setLocations] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // Filters
   const [search, setSearch] = useState('');
-  const [statusFilter, setStatusFilter] = useState<'all' | 'draft' | 'published'>('all');
-  const [locationFilter, setLocationFilter] = useState<string>('all');
+  const [statusFilter, setStatusFilter] = useState('all');
+  const [locationFilter, setLocationFilter] = useState('all');
 
   // Modals & action states
-  const [selectedPost, setSelectedPost] = useState<Post | null>(null);
-  const [publishingId, setPublishingId] = useState<string | null>(null);
+  const [selectedPost, setSelectedPost] = useState(null);
+  const [publishingId, setPublishingId] = useState(null);
 
   const fetchLocations = async () => {
     try {
@@ -52,7 +43,7 @@ export default function PostsManagementPage() {
   const fetchPosts = async () => {
     try {
       setLoading(true);
-      const params: any = {};
+      const params = {};
       if (statusFilter !== 'all') params.status = statusFilter;
       if (locationFilter !== 'all') params.locationId = locationFilter;
       if (search.trim()) params.search = search.trim();
@@ -76,12 +67,12 @@ export default function PostsManagementPage() {
     fetchPosts();
   }, [statusFilter, locationFilter]);
 
-  const handleSearchSubmit = (e: React.FormEvent) => {
+  const handleSearchSubmit = (e) => {
     e.preventDefault();
     fetchPosts();
   };
 
-  const handlePublishPost = async (postId: string, e: React.MouseEvent) => {
+  const handlePublishPost = async (postId, e) => {
     e.stopPropagation();
     try {
       setPublishingId(postId);
@@ -98,7 +89,7 @@ export default function PostsManagementPage() {
     }
   };
 
-  const handleDeletePost = async (postId: string, e: React.MouseEvent) => {
+  const handleDeletePost = async (postId, e) => {
     e.stopPropagation();
     if (confirm('Delete this Google Business Profile post?')) {
       try {
@@ -252,7 +243,7 @@ export default function PostsManagementPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {posts.map((post) => {
                 const locationObj =
-                  typeof post.locationId === 'object' ? (post.locationId as Location) : null;
+                  typeof post.locationId === 'object' ? post.locationId : null;
                 return (
                   <div
                     key={post._id}

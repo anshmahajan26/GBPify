@@ -18,16 +18,9 @@ import {
   AlertCircle,
   Copy,
   Check,
-  Tag,
-  MessageSquare,
-  Globe2,
-  Layers,
   Info,
-  X,
-  Plus,
 } from 'lucide-react';
 import api from '../../lib/api';
-import { Location, PostType, CtaType, PostVariation } from '../../types';
 import { GbpPostCardPreview } from '../../components/preview/GbpPostCardPreview';
 
 const SUGGESTED_TOPICS = [
@@ -44,30 +37,30 @@ function CreatePostContent() {
   const preSelectedLocationId = searchParams.get('locationId');
 
   // Locations state
-  const [locations, setLocations] = useState<Location[]>([]);
-  const [selectedLocationId, setSelectedLocationId] = useState<string>('');
+  const [locations, setLocations] = useState([]);
+  const [selectedLocationId, setSelectedLocationId] = useState('');
   const [loadingLocations, setLoadingLocations] = useState(true);
 
   // Form State
   const [topic, setTopic] = useState('');
-  const [postType, setPostType] = useState<PostType>('Update');
+  const [postType, setPostType] = useState('Update');
   const [tone, setTone] = useState('Engaging');
   const [language, setLanguage] = useState('English');
-  const [ctaType, setCtaType] = useState<CtaType>('Learn More');
+  const [ctaType, setCtaType] = useState('Learn More');
   const [ctaUrl, setCtaUrl] = useState('');
   const [additionalNotes, setAdditionalNotes] = useState('');
 
   // AI Generated Variations
-  const [variations, setVariations] = useState<PostVariation[]>([]);
-  const [selectedVariationIndex, setSelectedVariationIndex] = useState<number>(0);
+  const [variations, setVariations] = useState([]);
+  const [selectedVariationIndex, setSelectedVariationIndex] = useState(0);
   const [editedContent, setEditedContent] = useState('');
   const [generatingAI, setGeneratingAI] = useState(false);
-  const [aiError, setAiError] = useState<string | null>(null);
-  const [aiWarning, setAiWarning] = useState<string | null>(null);
+  const [aiError, setAiError] = useState(null);
+  const [aiWarning, setAiWarning] = useState(null);
 
   // Actions state
-  const [savingAction, setSavingAction] = useState<'draft' | 'publish' | 'collection' | null>(null);
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [savingAction, setSavingAction] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -138,7 +131,7 @@ function CreatePostContent() {
       } else {
         setAiError('Failed to generate post variations. Please try again.');
       }
-    } catch (err: any) {
+    } catch (err) {
       console.error('AI generation error', err);
       setAiError(err.response?.data?.message || 'Error communicating with AI service.');
     } finally {
@@ -146,7 +139,7 @@ function CreatePostContent() {
     }
   };
 
-  const handleSelectVariation = (idx: number) => {
+  const handleSelectVariation = (idx) => {
     setSelectedVariationIndex(idx);
     setEditedContent(variations[idx]?.content || '');
   };
@@ -157,7 +150,7 @@ function CreatePostContent() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleSavePost = async (status: 'draft' | 'published') => {
+  const handleSavePost = async (status) => {
     if (!selectedLocationId || !topic || !editedContent) {
       setAiError('Please ensure a location, topic, and post content are ready before saving.');
       return;
@@ -190,7 +183,7 @@ function CreatePostContent() {
           router.push('/dashboard');
         }, 1200);
       }
-    } catch (err: any) {
+    } catch (err) {
       setAiError(err.response?.data?.message || 'Failed to save post.');
     } finally {
       setSavingAction(null);
@@ -357,7 +350,7 @@ function CreatePostContent() {
                   </label>
                   <select
                     value={postType}
-                    onChange={(e) => setPostType(e.target.value as PostType)}
+                    onChange={(e) => setPostType(e.target.value)}
                     className="w-full px-3 py-2 text-xs rounded-lg border border-slate-200 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
                   >
                     <option value="Update">Update (News)</option>
@@ -410,7 +403,7 @@ function CreatePostContent() {
                   </label>
                   <select
                     value={ctaType}
-                    onChange={(e) => setCtaType(e.target.value as CtaType)}
+                    onChange={(e) => setCtaType(e.target.value)}
                     className="w-full px-3 py-2 text-xs rounded-lg border border-slate-200 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
                   >
                     <option value="Book">Book (Appointments)</option>

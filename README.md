@@ -5,7 +5,7 @@
 [![Express](https://img.shields.io/badge/Express-4.21-lightgrey?style=flat&logo=express)](https://expressjs.com/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-brightgreen?style=flat&logo=mongodb)](https://www.mongodb.com/)
 [![OpenRouter AI](https://img.shields.io/badge/OpenRouter-AI-blue?style=flat&logo=openai)](https://openrouter.ai/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-TSX-blue?style=flat&logo=typescript)](https://www.typescriptlang.org/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-JSX-yellow?style=flat&logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 An end-to-end full-stack web application designed for multi-location businesses, digital marketing agencies, and local SEO managers to generate, customize, preview, and manage high-ranking **Google Business Profile (GBP)** posts using **OpenRouter AI**.
 
@@ -75,7 +75,7 @@ graph TD
 
 | Layer | Technologies |
 |---|---|
-| **Frontend** | Next.js 15 (App Router), React 19, TypeScript (`.tsx`), Tailwind CSS, Lucide React Icons |
+| **Frontend** | Next.js 15 (App Router), React 19, JavaScript (`.jsx` / `.js`), Tailwind CSS, Lucide React Icons |
 | **Backend** | Node.js (v20+), Express.js (ES Modules), Mongoose, JWT, Bcrypt.js, Axios, Morgan |
 | **Database** | MongoDB (Local or MongoDB Atlas) |
 | **AI Model** | OpenRouter API (`meta-llama/llama-3.3-70b-instruct:free` or configurable via `.env`) |
