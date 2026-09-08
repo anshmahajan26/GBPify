@@ -4,6 +4,9 @@
   "description": "Backend API for AI-Powered Google Business Profile (GBP) Post Manager",
   "main": "src/server.js",
   "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --watch src/server.js"
