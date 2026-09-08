@@ -29,7 +29,7 @@ export default function LoginPage() {
     setLoading(true);
     setError(null);
 
-    const res = await login(email, password);
+    const res = await login(email.trim().toLowerCase(), password);
     setLoading(false);
 
     if (res.success) {

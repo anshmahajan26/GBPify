@@ -6,6 +6,26 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '../../context/AuthContext';
 import { Sparkles, User, Mail, Lock, Loader2, ArrowRight } from 'lucide-react';
 
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+const COMMON_TYPO_DOMAINS = {
+  'gmil.com': 'gmail.com',
+  'gamil.com': 'gmail.com',
+  'gmial.com': 'gmail.com',
+  'gmaill.com': 'gmail.com',
+  'gmai.com': 'gmail.com',
+  'gmeil.com': 'gmail.com',
+  'yaho.com': 'yahoo.com',
+  'yahooo.com': 'yahoo.com',
+  'ymail.con': 'ymail.com',
+  'hotmial.com': 'hotmail.com',
+  'hotmai.com': 'hotmail.com',
+  'outlok.com': 'outlook.com',
+  'outloo.com': 'outlook.com',
+  'iclud.com': 'icloud.com',
+  'icoud.com': 'icloud.com',
+};
+
 export default function RegisterPage() {
   const router = useRouter();
   const { register, isAuthenticated } = useAuth();
@@ -28,6 +48,18 @@ export default function RegisterPage() {
       return;
     }
 
+    const cleanEmail = email.trim().toLowerCase();
+    if (!EMAIL_REGEX.test(cleanEmail)) {
+      setError('Please enter a valid email format (e.g. name@example.com)');
+      return;
+    }
+
+    const domain = cleanEmail.split('@')[1];
+    if (COMMON_TYPO_DOMAINS[domain]) {
+      setError(`Invalid email domain '@${domain}'. Did you mean '@${COMMON_TYPO_DOMAINS[domain]}'?`);
+      return;
+    }
+
     if (password.length < 6) {
       setError('Password must be at least 6 characters');
       return;
@@ -41,7 +73,7 @@ export default function RegisterPage() {
     setLoading(true);
     setError(null);
 
-    const res = await register(name, email, password);
+    const res = await register(name.trim(), cleanEmail, password);
     setLoading(false);
 
     if (res.success) {
