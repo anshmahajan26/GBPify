@@ -59,11 +59,11 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// API Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/locations', locationRoutes);
-app.use('/api/posts', postRoutes);
-app.use('/api/ai', aiRoutes);
+// API Routes (supports both /api/* and direct /* prefixes)
+app.use(['/api/auth', '/auth'], authRoutes);
+app.use(['/api/locations', '/locations'], locationRoutes);
+app.use(['/api/posts', '/posts'], postRoutes);
+app.use(['/api/ai', '/ai'], aiRoutes);
 
 // 404 Handler
 app.use((req, res) => {
