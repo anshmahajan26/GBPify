@@ -14,11 +14,8 @@ import {
   PlusCircle,
   Building2,
   ArrowRight,
-  TrendingUp,
-  ExternalLink,
   Edit3,
   Send,
-  Trash2,
   X,
   Loader2,
   AlertCircle,
@@ -91,6 +88,13 @@ export default function DashboardPage() {
     <ProtectedRoute>
       <div className="min-h-screen bg-slate-50/60 dark:bg-slate-950 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          {error && (
+            <div className="p-4 rounded-xl bg-red-50 text-red-700 border border-red-200 dark:bg-red-950/50 dark:text-red-300 dark:border-red-900 flex items-center gap-2 text-xs">
+              <AlertCircle className="w-4 h-4 flex-shrink-0" />
+              <span>{error}</span>
+            </div>
+          )}
+
           {/* Top Banner / Welcome */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
             <div className="space-y-1">
@@ -340,11 +344,10 @@ export default function DashboardPage() {
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
                           <span
-                            className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                              post.status === 'published'
-                                ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
-                                : 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300'
-                            }`}
+                            className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${post.status === 'published'
+                              ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
+                              : 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300'
+                              }`}
                           >
                             {post.status}
                           </span>
@@ -412,8 +415,8 @@ export default function DashboardPage() {
                     {postsModalType === 'all'
                       ? 'All Posts Overview'
                       : postsModalType === 'draft'
-                      ? 'Draft Posts (Ready for Edit & Publish)'
-                      : 'Published Posts (Live Updates)'}
+                        ? 'Draft Posts (Ready for Edit & Publish)'
+                        : 'Published Posts (Live Updates)'}
                   </h3>
                   <p className="text-xs text-slate-500">
                     Click any post to view details, live Google preview, or edit
@@ -446,11 +449,10 @@ export default function DashboardPage() {
                       <div className="space-y-1 flex-1">
                         <div className="flex items-center gap-2">
                           <span
-                            className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${
-                              post.status === 'published'
-                                ? 'bg-emerald-100 text-emerald-800'
-                                : 'bg-amber-100 text-amber-800'
-                            }`}
+                            className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${post.status === 'published'
+                              ? 'bg-emerald-100 text-emerald-800'
+                              : 'bg-amber-100 text-amber-800'
+                              }`}
                           >
                             {post.status}
                           </span>
