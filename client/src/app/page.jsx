@@ -2,8 +2,6 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useAuth } from '../context/AuthContext';
 import {
   Sparkles,
   ArrowRight,
@@ -12,7 +10,6 @@ import {
   TrendingUp,
   FileText,
   Eye,
-  Zap,
   ShieldCheck,
   ChevronRight,
 } from 'lucide-react';
@@ -23,44 +20,32 @@ const SAMPLE_DEMOS = [
     topic: 'Free Dental Checkup Camp This Weekend',
     businessName: 'Apex Dental Care & Implant Center',
     category: 'Dental Clinic',
-    city: 'New York',
+    city: 'New York, NY',
+    content: `🦷 Celebrate Healthy Smiles at Apex Dental Care!\n\nThis Saturday & Sunday only, join us for our Community Oral Wellness Camp. Receive a complimentary oral exam, cavity screening, and 1-on-1 consultation with Dr. Alexander Wright.\n\n✔️ State-of-the-art 3D Digital Imaging\n✔️ Zero-wait appointments\n✔️ Special family packages available\n\nSpots fill quickly! Click 'Book' below to secure your complimentary consultation today.`,
     ctaType: 'Book',
-    content: `✨ Exciting Community Update from Apex Dental Care!\n\nThis Saturday & Sunday, we're hosting a Free Dental Health Checkup Camp for all local residents in New York. Receive complimentary dental examinations, digital scans, and personalized oral care guidance from our senior specialists.\n\n📍 452 Downtown Plaza, Suite 104, New York\n📅 Saturday & Sunday | 9:00 AM - 4:00 PM\n\nLimited appointments available. Click 'Book' to reserve your family's time slot today!`,
   },
   {
-    topic: 'Weekend Artisanal Brew & Pastry Special',
+    topic: 'Artisan Pour-Over Weekend: 20% OFF Single-Origin',
     businessName: 'Urban Artisan Roast Coffee',
     category: 'Coffee Shop & Bakery',
-    city: 'San Francisco',
-    ctaType: 'Get Offer',
+    city: 'San Francisco, CA',
     content: `☕ Special Weekend Treat in San Francisco!\n\nJoin us this weekend at Urban Artisan Roast Coffee and enjoy 20% OFF all signature single-origin pour-overs paired with freshly baked almond croissants.\n\n✔️ Freshly roasted Ethiopian & Colombian beans\n✔️ Cozy ambiance & high-speed Wi-Fi\n\nShow this post at checkout or click 'Get Offer' to claim your digital voucher!`,
+    ctaType: 'Get Offer',
   },
   {
-    topic: 'Summer Fitness Bootcamp & Free Trial Pass',
+    topic: 'New High-Intensity Hyrox Training Class Launch',
     businessName: 'Pulse Fitness & Recovery Club',
     category: 'Fitness Center & Gym',
-    city: 'Los Angeles',
+    city: 'Los Angeles, CA',
+    content: `💪 Level Up Your Strength & Endurance in LA!\n\nIntroducing our brand new Hyrox & Functional Athletic Training circuit at Pulse Fitness. Designed for all fitness levels to build functional power, burn fat, and boost cardiovascular stamina.\n\n✔️ Certified Olympic coaches\n✔️ Cryotherapy recovery lounge access\n✔️ First session completely free for locals\n\nReady to transform? Tap 'Sign Up' below!`,
     ctaType: 'Sign Up',
-    content: `🔥 Ready to crush your health goals in Los Angeles?\n\nPulse Fitness & Recovery Club is kicking off our 4-Week High-Intensity Bootcamp! Claim your complimentary 3-day full access gym pass including sauna, recovery lounge, and group training classes.\n\n👉 Click 'Sign Up Now' to activate your pass before spots fill up!`,
   },
 ];
 
 export default function LandingPage() {
-  const router = useRouter();
-  const { demoLogin } = useAuth();
   const [activeDemoIndex, setActiveDemoIndex] = useState(0);
-  const [isDemoLoading, setIsDemoLoading] = useState(false);
 
   const activeDemo = SAMPLE_DEMOS[activeDemoIndex];
-
-  const handleDemoClick = async () => {
-    setIsDemoLoading(true);
-    const res = await demoLogin();
-    setIsDemoLoading(false);
-    if (res.success) {
-      router.push('/dashboard');
-    }
-  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -97,15 +82,12 @@ export default function LandingPage() {
                 <ArrowRight className="w-4 h-4" />
               </Link>
 
-              <button
-                type="button"
-                onClick={handleDemoClick}
-                disabled={isDemoLoading}
+              <Link
+                href="/login"
                 className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 font-semibold text-sm shadow-sm transition-all"
               >
-                <Zap className="w-4 h-4 text-amber-500" />
-                <span>{isDemoLoading ? 'Loading Demo Profile...' : '1-Click Instant Demo'}</span>
-              </button>
+                <span>Sign In to Dashboard</span>
+              </Link>
             </div>
 
             {/* Trust Badges */}
@@ -320,13 +302,12 @@ export default function LandingPage() {
             >
               Get Started for Free
             </Link>
-            <button
-              onClick={handleDemoClick}
-              disabled={isDemoLoading}
-              className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-blue-800/60 hover:bg-blue-800 text-white border border-blue-400/40 font-semibold text-sm transition-all"
+            <Link
+              href="/login"
+              className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-blue-800/60 hover:bg-blue-800 text-white border border-blue-400/40 font-semibold text-sm transition-all text-center"
             >
-              {isDemoLoading ? 'Launching Demo...' : 'Open Demo Dashboard'}
-            </button>
+              Sign In to Existing Account
+            </Link>
           </div>
         </div>
       </section>

@@ -63,19 +63,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const demoLogin = async () => {
-    const demoEmail = 'demo@gbpexample.com';
-    const demoPassword = 'password123';
-    const demoName = 'Sarah Jenkins (Local SEO Lead)';
-
-    const loginRes = await login(demoEmail, demoPassword);
-    if (loginRes.success) {
-      return loginRes;
-    }
-
-    return await register(demoName, demoEmail, demoPassword);
-  };
-
   const logout = () => {
     setUser(null);
     setToken(null);
@@ -94,7 +81,6 @@ export const AuthProvider = ({ children }) => {
         isLoading,
         login,
         register,
-        demoLogin,
         logout,
         isAuthenticated: !!token && !!user,
       }}

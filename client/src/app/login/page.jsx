@@ -4,16 +4,15 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '../../context/AuthContext';
-import { Sparkles, Mail, Lock, Loader2, ArrowRight, Zap } from 'lucide-react';
+import { Sparkles, Mail, Lock, Loader2, ArrowRight } from 'lucide-react';
 
 export default function LoginPage() {
   const router = useRouter();
-  const { login, demoLogin, isAuthenticated } = useAuth();
+  const { login, isAuthenticated } = useAuth();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [demoLoading, setDemoLoading] = useState(false);
   const [error, setError] = useState(null);
 
   if (typeof window !== 'undefined' && isAuthenticated) {
@@ -40,19 +39,6 @@ export default function LoginPage() {
     }
   };
 
-  const handleDemoLogin = async () => {
-    setDemoLoading(true);
-    setError(null);
-    const res = await demoLogin();
-    setDemoLoading(false);
-
-    if (res.success) {
-      router.push('/dashboard');
-    } else {
-      setError(res.message || 'Demo login failed.');
-    }
-  };
-
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md space-y-6">
@@ -67,26 +53,6 @@ export default function LoginPage() {
           <p className="text-xs text-slate-500 dark:text-slate-400">
             Sign in to manage your Google Business Profile posts and locations
           </p>
-        </div>
-
-        {/* 1-Click Demo Evaluation Banner */}
-        <div className="p-4 rounded-xl bg-blue-50/80 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900 text-center space-y-2">
-          <div className="flex items-center justify-center gap-1.5 text-xs font-semibold text-blue-700 dark:text-blue-300">
-            <Zap className="w-4 h-4 text-amber-500" />
-            <span>Fast Assessment Grading & Testing</span>
-          </div>
-          <p className="text-[11px] text-slate-600 dark:text-slate-400">
-            Click below to instantly sign in with pre-seeded locations and posts.
-          </p>
-          <button
-            type="button"
-            onClick={handleDemoLogin}
-            disabled={demoLoading}
-            className="w-full flex items-center justify-center gap-2 py-2 px-3 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm transition-all"
-          >
-            {demoLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Sparkles className="w-3.5 h-3.5" />}
-            <span>{demoLoading ? 'Logging into Demo...' : '1-Click Instant Demo Login'}</span>
-          </button>
         </div>
 
         {/* Main Form Card */}
