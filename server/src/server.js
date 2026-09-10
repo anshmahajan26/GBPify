@@ -22,6 +22,16 @@ const app = express();
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
+// Ensure MongoDB connection before handling requests (essential for Vercel Serverless cold starts)
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+  } catch (err) {
+    console.error('DB connection middleware error:', err);
+  }
+  next();
+});
+
 // CORS configuration for local and deployed environments
 const allowedOrigins = [
   'http://localhost:3000',
@@ -82,9 +92,12 @@ app.use((err, req, res, next) => {
   });
 });
 
-const PORT = process.env.PORT || 5000;
+if (!process.env.VERCEL) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`🚀 GBP Post Manager Server running on port ${PORT}`);
+    console.log(`📡 Health check available at: http://localhost:${PORT}/api/health`);
+  });
+}
 
-app.listen(PORT, () => {
-  console.log(`🚀 GBP Post Manager Server running on port ${PORT}`);
-  console.log(`📡 Health check available at: http://localhost:${PORT}/api/health`);
-});
+export default app;
