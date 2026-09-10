@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import morgan from 'morgan';
+import mongoose from 'mongoose';
 import { connectDB } from './config/db.js';
 
 // Route Imports
@@ -59,13 +60,16 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));
 }
 
-// Health Check
-app.get('/api/health', (req, res) => {
+// Favicon handler
+app.get('/favicon.ico', (req, res) => res.status(204).end());
+
+// Health Check & Root Welcome Endpoints
+app.get(['/', '/api', '/api/health'], (req, res) => {
   res.json({
     status: 'online',
     service: 'AI-Powered GBP Post Manager API',
     timestamp: new Date().toISOString(),
-    database: 'connected',
+    database: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
   });
 });
 
