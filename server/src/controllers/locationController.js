@@ -1,11 +1,9 @@
 import Location from '../models/Location.js';
-import { seedUserLocationsIfEmpty } from '../utils/seedData.js';
 
 // @desc    Get all locations for the authenticated user
 // @route   GET /api/locations
 export const getLocations = async (req, res) => {
   try {
-    await seedUserLocationsIfEmpty(req.user._id);
     const locations = await Location.find({ userId: req.user._id }).sort({ createdAt: -1 });
     return res.json({
       success: true,

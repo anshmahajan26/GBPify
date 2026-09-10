@@ -1,12 +1,6 @@
 # Dependencies
 node_modules/
-client/node_modules/
-server/node_modules/
 package-lock.json
-client/package-lock.json
-server/package-lock.json
-/.pnp
-.pnp.js
 
 # Environment variables
 .env
@@ -14,14 +8,6 @@ server/package-lock.json
 .env.development.local
 .env.test.local
 .env.production.local
-server/.env
-client/.env*.local
-
-# Production builds
-client/.next/
-client/out/
-build/
-dist/
 
 # Logs
 npm-debug.log*
@@ -29,7 +15,8 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# System files
+# System & IDE files
 .DS_Store
-*.pem
 Thumbs.db
+.vscode/
+.idea/

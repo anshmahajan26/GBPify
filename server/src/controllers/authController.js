@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
-import { seedUserLocationsIfEmpty } from '../utils/seedData.js';
 
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET || 'super_secret_gbp_jwt_token_key_2026_secure', {
@@ -74,9 +73,6 @@ export const registerUser = async (req, res) => {
       password,
     });
 
-    // Seed mock locations for immediate testing
-    await seedUserLocationsIfEmpty(user._id);
-
     return res.status(201).json({
       success: true,
       data: {
@@ -105,8 +101,6 @@ export const loginUser = async (req, res) => {
     const user = await User.findOne({ email: email.toLowerCase() });
 
     if (user && (await user.matchPassword(password))) {
-      await seedUserLocationsIfEmpty(user._id);
-
       return res.json({
         success: true,
         data: {

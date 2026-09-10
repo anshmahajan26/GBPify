@@ -41,7 +41,7 @@ An end-to-end full-stack web application designed for multi-location businesses,
 
 3. **Multi-Location Hub**:
    - Add and manage business branches and franchises (name, category, address, city, phone, website).
-   - Pre-seeded mock locations (Dental Clinic, Coffee Shop, Fitness Center) for instant assessment grading.
+   - Dynamic location management with creation, editing, and deletion capabilities.
    - Click any location card to immediately launch the AI Post Studio pre-loaded for that location.
 
 4. **Draft & Instant Publish Engine**:
@@ -94,7 +94,7 @@ Login / Register ➔ Dashboard ➔ Locations ➔ Create GBP Post ➔ AI Generate
 |---|---|---|
 | 1. Login & Registration | ✅ Full JWT Auth + 1-Click Demo | [login/page.tsx](file:///d:/pavilion/vs%20code%20practices/EdgeLink/client/src/app/login/page.tsx) |
 | 2. Dashboard Analytics | ✅ 4 Stat Cards + Quick Action Modals | [dashboard/page.tsx](file:///d:/pavilion/vs%20code%20practices/EdgeLink/client/src/app/dashboard/page.tsx) |
-| 3. Locations Directory | ✅ Hoverable Cards + Seed Data + Add Modal | [locations/page.tsx](file:///d:/pavilion/vs%20code%20practices/EdgeLink/client/src/app/locations/page.tsx) |
+| 3. Locations Directory | ✅ Hoverable Cards + Add Modal + Management | [locations/page.jsx](file:///d:/pavilion/vs%20code%20practices/EdgeLink/client/src/app/locations/page.jsx) |
 | 4. Create GBP Post | ✅ Topic, Type, Tone, Language, CTA | [create-post/page.tsx](file:///d:/pavilion/vs%20code%20practices/EdgeLink/client/src/app/create-post/page.tsx) |
 | 5. AI Post Generation | ✅ OpenRouter 3 Variations + Fallback | [aiController.js](file:///d:/pavilion/vs%20code%20practices/EdgeLink/server/src/controllers/aiController.js) |
 | 6. CTA Selection | ✅ Book, Call, Learn More, Order, Sign Up, Get Offer, None | [GbpPostCardPreview.tsx](file:///d:/pavilion/vs%20code%20practices/EdgeLink/client/src/components/preview/GbpPostCardPreview.tsx) |

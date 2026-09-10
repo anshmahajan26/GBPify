@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, Suspense } from 'react';
+import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ProtectedRoute } from '../../components/auth/ProtectedRoute';
 import {
@@ -281,6 +282,19 @@ function CreatePostContent() {
                   <div className="text-xs text-slate-400 flex items-center gap-2">
                     <Loader2 className="w-3.5 h-3.5 animate-spin text-blue-600" />
                     Loading your locations...
+                  </div>
+                ) : locations.length === 0 ? (
+                  <div className="p-3 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/50 rounded-xl flex items-center justify-between text-xs text-amber-800 dark:text-amber-300">
+                    <span className="flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4 text-amber-600 flex-shrink-0" />
+                      No locations found. Add your business location first to generate posts.
+                    </span>
+                    <Link
+                      href="/locations"
+                      className="px-2.5 py-1 rounded-lg bg-amber-600 hover:bg-amber-700 text-white font-semibold transition-colors flex-shrink-0"
+                    >
+                      Add Location
+                    </Link>
                   </div>
                 ) : (
                   <div className="relative">
