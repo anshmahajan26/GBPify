@@ -1,113 +1,188 @@
-# 🚀 PostMakerGBP - AI-Powered Google Business Profile Post Manager
+# 🌟 GBPify (EdgeLink) — AI-Powered Google Business Profile Post Manager
 
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-blue?style=flat&logo=react)](https://react.dev/)
 [![Node.js](https://img.shields.io/badge/Node.js-20+-green?style=flat&logo=node.js)](https://nodejs.org/)
 [![Express](https://img.shields.io/badge/Express-4.21-lightgrey?style=flat&logo=express)](https://expressjs.com/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-brightgreen?style=flat&logo=mongodb)](https://www.mongodb.com/)
 [![OpenRouter AI](https://img.shields.io/badge/OpenRouter-AI-blue?style=flat&logo=openai)](https://openrouter.ai/)
-[![JavaScript](https://img.shields.io/badge/JavaScript-JSX-yellow?style=flat&logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=flat&logo=tailwind-css)](https://tailwindcss.com/)
 
-An end-to-end full-stack web application designed for multi-location businesses, digital marketing agencies, and local SEO managers to generate, customize, preview, and manage high-ranking **Google Business Profile (GBP)** posts using **OpenRouter AI**.
+**GBPify** is a simple, modern web application that helps businesses and marketing agencies create and manage **Google Business Profile (GBP)** posts in seconds using Artificial Intelligence.
+
+Instead of spending hours brainstorming topics, writing copy, and wondering how the post will look on Google, **GBPify generates 3 tailored post variations with AI** and gives you a **real-time live preview of how it looks on Google Search & Google Maps** before you publish.
 
 ---
 
-## 📑 Table of Contents
+## 📌 Table of Contents
+
+- [What Does This App Do?](#-what-does-this-app-do)
+- [How It Works (5 Easy Steps)](#-how-it-works-5-easy-steps)
 - [Key Features](#-key-features)
-- [System Architecture](#-system-architecture)
-- [Technology Stack](#-technology-stack)
-- [Required Flow Compliance](#-required-flow-compliance)
-- [Getting Started & Local Setup](#-getting-started--local-setup)
-- [Environment Variables](#-environment-variables)
-- [How to Run Locally](#-how-to-run-locally)
-- [API Documentation](#-api-documentation)
-- [Deployment Guide](#-deployment-guide)
+- [Tech Stack](#-tech-stack)
+- [Folder Structure](#-folder-structure)
+- [Getting Started Locally](#-getting-started-locally)
+- [Environment Variables Explained](#-environment-variables-explained)
+- [Backend API Endpoints](#-backend-api-endpoints)
+- [How to Deploy](#-how-to-deploy)
+
+---
+
+## 💡 What Does This App Do?
+
+Writing regular posts on Google Business Profile is essential for ranking higher in local search results and attracting nearby customers. However, managing multiple locations and coming up with fresh content every week is time-consuming.
+
+**GBPify solves this by:**
+1. Storing your business locations (store name, category, address, phone, website).
+2. Generating 3 ready-to-use AI posts per prompt (Promotional, Community-focused, or Educational).
+3. Displaying an exact replica of the Google Knowledge Panel and Google Maps post preview (with desktop and mobile views).
+4. Letting you save drafts or publish posts with 1 click.
+
+---
+
+## 🔄 How It Works (5 Easy Steps)
+
+```text
+1. Register / Login
+       ↓
+2. Add your Business Location(s) (Store name, address, category)
+       ↓
+3. AI Post Studio (Type your topic, choose tone & language)
+       ↓
+4. Pick Your Favorite Variation & Customize Call-to-Action (Call Now, Book, Learn More, etc.)
+       ↓
+5. Live Google Mockup Preview ➔ Save as Draft or Mark as Published!
+```
 
 ---
 
 ## ✨ Key Features
 
-1. **AI Post Generation (OpenRouter AI)**:
-   - Input business location, topic, post type, tone, language, and CTA.
-   - Generates **3 distinct AI-powered post variations** per prompt:
-     - *Variation 1*: Engaging & Community-Focused
-     - *Variation 2*: Promotional & High-Conversion
-     - *Variation 3*: Educational & Local Authority
-   - Secure server-side OpenRouter API calls with resilient fallback templating.
+### 1. 🤖 AI Post Studio (Powered by OpenRouter AI)
+- Enter any topic, offer, or announcement (e.g. *"20% discount on dental cleanings this Friday"*).
+- Select your post type (*Update*, *Offer*, *Event*), tone (*Engaging*, *Professional*, *Urgent*), and language.
+- AI instantly creates **3 unique variations**:
+  - **Variation 1: Engaging & Community** — Friendly, relatable, and inviting.
+  - **Variation 2: Promotional & High-Conversion** — Direct offer highlighting urgency and savings.
+  - **Variation 3: Educational & Authority** — Helpful tips establishing your local expertise.
 
-2. **Live Google Business Profile Mockup**:
-   - Pixel-perfect Google Search Knowledge Panel and Google Maps post preview.
-   - Desktop and Mobile responsive preview toggles.
-   - Live rendering of Business Avatar, verified badge, category, date, and interactive CTA buttons.
+### 2. 📱 Pixel-Perfect Live Google Preview
+- See how your post looks in real time before publishing.
+- Switch between **Google Search Knowledge Panel** and **Google Maps** views.
+- Toggle between **Desktop** and **Mobile** screen sizes.
+- Interactive Call-To-Action (CTA) buttons (*Call Now*, *Book*, *Order Online*, *Learn More*, *Sign Up*, *Get Offer*).
 
-3. **Multi-Location Hub**:
-   - Add and manage business branches and franchises (name, category, address, city, phone, website).
-   - Dynamic location management with creation, editing, and deletion capabilities.
-   - Click any location card to immediately launch the AI Post Studio pre-loaded for that location.
+### 3. 📍 Business Location Manager
+- Add and manage multiple branches or franchises.
+- Save each branch's name, category, address, city, phone number, and website.
+- Clean and intuitive management: easily create, view, or delete branches anytime.
+- Start with a clean slate — no unwanted test locations will reappear after deletion.
 
-4. **Draft & Instant Publish Engine**:
-   - Save posts as **Draft** or mark as **Published**.
-   - One-click publish action directly from dashboard cards and post management lists.
-   - Real-time dashboard analytics (Total Locations, Total Posts, Drafts, Published).
+### 4. 💾 Drafts & One-Click Publishing
+- Save works-in-progress as **Drafts** to edit later.
+- Switch status to **Published** whenever you are ready.
+- Edit existing posts or delete outdated ones with single-click actions.
 
-5. **All Posts Management Hub**:
-   - Full-text search across topics and post content.
-   - Filter tabs: *All Posts*, *Drafts*, *Published*, and *Filter by Location*.
-   - In-place editing modal, deletion confirmation, and clipboard text copier.
+### 5. 📊 Real-Time Dashboard
+- Overview metrics: Total Locations, Total Posts, Drafts Count, and Published Count.
+- Quick-access list of recent posts with direct actions to publish, view, or edit.
 
-6. **1-Click Demo Evaluation Login**:
-   - Instant 1-click test button on the login screen for rapid assessment review.
+### 6. 🔒 Safe & Secure Authentication
+- JWT-based login and registration.
+- Password encryption with `bcryptjs`.
+- 1-Click "Demo Login" button on the login screen for quick evaluation.
 
 ---
 
-## 🏗️ System Architecture
+## 🛠️ Tech Stack
 
-```mermaid
-graph TD
-    User([User / Local SEO Manager]) <--> Frontend[Next.js 15 Client - TypeScript/TSX]
-    Frontend <-->|JWT + REST API| Backend[Express.js API Server - Node.js]
-    Backend <-->|Mongoose ODM| DB[(MongoDB Database)]
-    Backend <-->|Server-Side Prompt Engine| OpenRouter[OpenRouter AI API]
+### Frontend
+- **Framework**: [Next.js 15](https://nextjs.org/) (React 19, App Router)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **HTTP Client**: Axios with JWT interceptors
+
+### Backend
+- **Runtime**: [Node.js](https://nodejs.org/) (ES Modules)
+- **Framework**: [Express.js](https://expressjs.com/)
+- **Database**: [MongoDB](https://www.mongodb.com/) with [Mongoose](https://mongoosejs.com/)
+- **AI Integration**: OpenRouter API (`meta-llama/llama-3.3-70b-instruct:free` or any preferred model)
+- **Authentication**: JSON Web Tokens (`jsonwebtoken`) & `bcryptjs`
+
+---
+
+## 📁 Folder Structure
+
+```text
+GBPify/
+├── client/                     # Next.js Frontend
+│   ├── src/
+│   │   ├── app/                # App router pages
+│   │   │   ├── login/          # Login page (with 1-click demo login)
+│   │   │   ├── register/       # User registration
+│   │   │   ├── dashboard/      # Main dashboard with statistics
+│   │   │   ├── locations/      # Location management (add/delete)
+│   │   │   ├── create-post/    # AI Studio + live editor
+│   │   │   └── posts/          # All posts directory (search & filter)
+│   │   ├── components/         # Reusable UI components
+│   │   │   ├── auth/           # Protected routes
+│   │   │   ├── layout/         # Navbar, Footer
+│   │   │   ├── locations/      # Add location modal
+│   │   │   ├── posts/          # Edit post modal, quick view
+│   │   │   └── preview/        # Live Google Search & Maps card mockup
+│   │   ├── context/            # Authentication context
+│   │   └── lib/                # API client configuration
+│   └── package.json
+│
+├── server/                     # Express.js Backend API
+│   ├── src/
+│   │   ├── config/             # MongoDB database connection
+│   │   ├── controllers/        # Route controllers (Auth, AI, Locations, Posts)
+│   │   ├── middleware/         # Auth verification middleware
+│   │   ├── models/             # Mongoose schemas (User, Location, Post)
+│   │   ├── routes/             # API routes
+│   │   └── server.js           # Express app entry point
+│   ├── .gitignore              # Server gitignore (ignores node_modules, .env)
+│   └── package.json
+│
+├── .gitignore                  # Root gitignore
+└── README.md                   # Project documentation
 ```
 
 ---
 
-## 🛠️ Technology Stack
+## 🚀 Getting Started Locally
 
-| Layer | Technologies |
-|---|---|
-| **Frontend** | Next.js 15 (App Router), React 19, JavaScript (`.jsx` / `.js`), Tailwind CSS, Lucide React Icons |
-| **Backend** | Node.js (v20+), Express.js (ES Modules), Mongoose, JWT, Bcrypt.js, Axios, Morgan |
-| **Database** | MongoDB (Local or MongoDB Atlas) |
-| **AI Model** | OpenRouter API (`meta-llama/llama-3.3-70b-instruct:free` or configurable via `.env`) |
+Follow these quick steps to run the project on your machine:
 
----
-
-## 📋 Required Flow Compliance
-
-The application strictly implements the workflow defined in the Technical Assessment:
-
-```
-Login / Register ➔ Dashboard ➔ Locations ➔ Create GBP Post ➔ AI Generate (3 Variations) ➔ Select & Edit CTA ➔ Live Google Preview ➔ Save Draft / Publish ➔ Post Management
-```
-
-| Requirement | Implementation Status | Location in Code |
-|---|---|---|
-| 1. Login & Registration | ✅ Full JWT Auth + 1-Click Demo | [login/page.tsx](file:///d:/pavilion/vs%20code%20practices/EdgeLink/client/src/app/login/page.tsx) |
-| 2. Dashboard Analytics | ✅ 4 Stat Cards + Quick Action Modals | [dashboard/page.tsx](file:///d:/pavilion/vs%20code%20practices/EdgeLink/client/src/app/dashboard/page.tsx) |
-| 3. Locations Directory | ✅ Hoverable Cards + Add Modal + Management | [locations/page.jsx](file:///d:/pavilion/vs%20code%20practices/EdgeLink/client/src/app/locations/page.jsx) |
-| 4. Create GBP Post | ✅ Topic, Type, Tone, Language, CTA | [create-post/page.tsx](file:///d:/pavilion/vs%20code%20practices/EdgeLink/client/src/app/create-post/page.tsx) |
-| 5. AI Post Generation | ✅ OpenRouter 3 Variations + Fallback | [aiController.js](file:///d:/pavilion/vs%20code%20practices/EdgeLink/server/src/controllers/aiController.js) |
-| 6. CTA Selection | ✅ Book, Call, Learn More, Order, Sign Up, Get Offer, None | [GbpPostCardPreview.tsx](file:///d:/pavilion/vs%20code%20practices/EdgeLink/client/src/components/preview/GbpPostCardPreview.tsx) |
-| 7. Post Preview | ✅ Realistic Google Maps/Search Mockup | [GbpPostCardPreview.tsx](file:///d:/pavilion/vs%20code%20practices/EdgeLink/client/src/components/preview/GbpPostCardPreview.tsx) |
-| 8. Save Draft | ✅ Saved to MongoDB `draft` | [postController.js](file:///d:/pavilion/vs%20code%20practices/EdgeLink/server/src/controllers/postController.js) |
-| 9. Publish | ✅ Status marked as `published` | [postController.js](file:///d:/pavilion/vs%20code%20practices/EdgeLink/server/src/controllers/postController.js) |
-| 10. Posts Management | ✅ Search, Filter, Edit, Delete | [posts/page.tsx](file:///d:/pavilion/vs%20code%20practices/EdgeLink/client/src/app/posts/page.tsx) |
+### Prerequisites
+- [Node.js](https://nodejs.org/) (version 18 or 20+ recommended)
+- [MongoDB](https://www.mongodb.com/) running locally or a free [MongoDB Atlas](https://www.mongodb.com/atlas) connection string
+- (Optional) Free API key from [OpenRouter](https://openrouter.ai/) for live AI generation
 
 ---
 
-## ⚙️ Environment Variables
+### Step 1: Install Dependencies
 
-### 1. Backend (`server/.env`)
+Open your terminal in the project root folder:
+
+```bash
+# Install backend dependencies
+cd server
+npm install
+
+# Install frontend dependencies
+cd ../client
+npm install
+```
+
+---
+
+### Step 2: Configure Environment Files
+
+#### 1. Backend (`server/.env`):
+Inside the `server` folder, create a file named `.env`:
+
 ```env
 PORT=5000
 MONGODB_URI=mongodb://127.0.0.1:27017/gbp_post_manager
@@ -117,101 +192,110 @@ OPENROUTER_MODEL=meta-llama/llama-3.3-70b-instruct:free
 CLIENT_URL=http://localhost:3000
 ```
 
-### 2. Frontend (`client/.env.local`)
+> **Note**: If you don't have an OpenRouter key immediately, the server includes a smart fallback generator so you can still test post creation without breaking!
+
+#### 2. Frontend (`client/.env.local`):
+Inside the `client` folder, create a file named `.env.local`:
+
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:5000/api
 ```
 
 ---
 
-## 🚀 How to Run Locally
+### Step 3: Run the Application
 
-### Prerequisites
-- Node.js (v18 or v20+)
-- MongoDB running locally or a free MongoDB Atlas connection string.
+Open two terminal windows:
 
-### Step 1: Clone and Install
-
-```bash
-# 1. Install server dependencies
-cd server
-npm install
-
-# 2. Install client dependencies
-cd ../client
-npm install
-```
-
-### Step 2: Configure Environment Files
-- Copy `server/.env.example` to `server/.env`
-- Copy `client/.env.example` to `client/.env.local`
-
-### Step 3: Start Backend and Frontend
-
-**Terminal 1 (Backend API):**
+#### Terminal 1 — Start the Server:
 ```bash
 cd server
 npm run dev
-# Running on http://localhost:5000
 ```
+*Backend runs on: `http://localhost:5000`*
 
-**Terminal 2 (Frontend Client):**
+#### Terminal 2 — Start the Client:
 ```bash
 cd client
 npm run dev
-# Running on http://localhost:3000
 ```
+*Frontend runs on: `http://localhost:3000`*
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
----
-
-## 📡 API Endpoints
-
-### Auth
-- `POST /api/auth/register` - Create user and auto-seed mock locations.
-- `POST /api/auth/login` - Authenticate user and return JWT.
-- `GET /api/auth/me` - Get current user profile.
-
-### Locations
-- `GET /api/locations` - List all user business locations.
-- `POST /api/locations` - Register a new business location.
-- `GET /api/locations/:id` - Fetch single location details.
-- `DELETE /api/locations/:id` - Remove location.
-
-### AI Studio
-- `POST /api/ai/generate-post` - Generate 3 distinct GBP post variations using OpenRouter AI.
-
-### Posts
-- `GET /api/posts` - List posts with search and filter queries.
-- `GET /api/posts/stats` - Summary counts for dashboard metrics.
-- `POST /api/posts` - Save new post (draft or published).
-- `GET /api/posts/:id` - Get post details.
-- `PUT /api/posts/:id` - Update post details.
-- `PATCH /api/posts/:id/publish` - Mark draft post as published.
-- `DELETE /api/posts/:id` - Delete post.
+Now open **[http://localhost:3000](http://localhost:3000)** in your browser!
 
 ---
 
-## 🌐 Deployment Guide
+## 🔑 Environment Variables Explained
 
-### Deploying Frontend (Vercel)
-1. Push repository to GitHub.
-2. Import repository into [Vercel](https://vercel.com).
+| Variable | Where It Goes | What It Does (In Easy Words) |
+|---|---|---|
+| `PORT` | `server/.env` | The local port where the Express server listens (default: `5000`). |
+| `MONGODB_URI` | `server/.env` | Connection link to your local MongoDB or MongoDB Atlas database. |
+| `JWT_SECRET` | `server/.env` | A secret password key used to sign and verify user login tokens. |
+| `OPENROUTER_API_KEY` | `server/.env` | Your API key from [OpenRouter.ai](https://openrouter.ai/) to generate AI content. |
+| `OPENROUTER_MODEL` | `server/.env` | Which AI model to use (default: `meta-llama/llama-3.3-70b-instruct:free`). |
+| `CLIENT_URL` | `server/.env` | The address of your frontend app (used to allow secure CORS requests). |
+| `NEXT_PUBLIC_API_URL` | `client/.env.local` | The backend API URL that the Next.js frontend sends requests to. |
+
+---
+
+## 📡 Backend API Endpoints
+
+All protected endpoints require an `Authorization: Bearer <token>` header.
+
+### 🔐 Authentication (`/api/auth`)
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/api/auth/register` | Register a new user account |
+| `POST` | `/api/auth/login` | Login with email and password |
+| `GET` | `/api/auth/me` | Fetch logged-in user's profile |
+
+### 📍 Locations (`/api/locations`)
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/api/locations` | Get all locations belonging to the current user |
+| `POST` | `/api/locations` | Add a new business location |
+| `GET` | `/api/locations/:id` | Get details of a single location |
+| `DELETE` | `/api/locations/:id` | Delete a business location |
+
+### 🤖 AI Generator (`/api/ai`)
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/api/ai/generate-post` | Generate 3 distinct post variations using AI |
+
+### 📝 Posts (`/api/posts`)
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/api/posts` | Get all posts (supports `search`, `status`, and `locationId` filters) |
+| `GET` | `/api/posts/stats` | Get dashboard numbers (total locations, total posts, drafts, published) |
+| `POST` | `/api/posts` | Create a new post (draft or published) |
+| `GET` | `/api/posts/:id` | Get a specific post |
+| `PUT` | `/api/posts/:id` | Update an existing post's text, CTA, or topic |
+| `PATCH` | `/api/posts/:id/publish`| Instantly mark a draft post as published |
+| `DELETE` | `/api/posts/:id` | Delete a post |
+
+---
+
+## 🌐 How to Deploy
+
+### 1. Deploy Frontend to [Vercel](https://vercel.com)
+1. Push your code to GitHub.
+2. In Vercel, click **Add New Project** and select your repository.
 3. Set **Root Directory** to `client`.
-4. Add Environment Variable:
-   - `NEXT_PUBLIC_API_URL`: URL of your deployed backend (e.g. `https://your-api.onrender.com/api`).
-5. Deploy!
+4. Under **Environment Variables**, add:
+   - `NEXT_PUBLIC_API_URL`: Your deployed backend URL (e.g. `https://your-backend.onrender.com/api`).
+5. Click **Deploy**!
 
-### Deploying Backend (Render / Railway)
-1. Create a new Web Service on [Render](https://render.com) or [Railway](https://railway.app).
+### 2. Deploy Backend to [Render](https://render.com)
+1. In Render, create a new **Web Service** connected to your GitHub repository.
 2. Set **Root Directory** to `server`.
-3. Set **Build Command**: `npm install`.
-4. Set **Start Command**: `npm start`.
-5. Configure Environment Variables:
-   - `PORT=5000`
-   - `MONGODB_URI`: Your MongoDB Atlas URI.
-   - `JWT_SECRET`: A secure random string.
-   - `OPENROUTER_API_KEY`: Your OpenRouter API key.
-   - `CLIENT_URL`: Your Vercel frontend URL.
-6. Deploy!
+3. Set **Build Command** to: `npm install`.
+4. Set **Start Command** to: `npm start`.
+5. Add your Environment Variables (`MONGODB_URI`, `JWT_SECRET`, `OPENROUTER_API_KEY`, `CLIENT_URL`, `PORT=5000`).
+6. Click **Create Web Service**!
+
+---
+
+## 🤝 Contributing & License
+
+This project is built for educational, portfolio, and commercial use. Feel free to fork, customize, and build upon it!
